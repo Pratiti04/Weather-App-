@@ -1,9 +1,12 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container {
+body {
+    /* margin: 0;
+    padding: 0;*/
     position: absolute;
     top: 0;
     left: 0;
@@ -11,6 +14,22 @@ body {
     height: 100vh;
     background: url(background.png);
     background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 20px 70px;
+    color: black;
 }
 
 .cloud {
@@ -31,4 +50,58 @@ body {
     100% {
         background-position: 5440px;
     }
+}
+
+.current-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.date-container .time {
+    font-size: 70px;
+    font-weight: 100;
+}
+
+.date-container #am-pm {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.date-container .date {
+    font-size: 30px;
+}
+
+.place-container {
+    text-align: end;
+}
+
+.place-container .time-zone {
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.place-container .country {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.current-info .others {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    /*border: 1px solid black;*/
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.current-info .others .weather-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    line-height: 2em;
 }
