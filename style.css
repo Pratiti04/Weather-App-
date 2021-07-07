@@ -52,8 +52,27 @@ body {
     }
 }
 
+.input-box .input {
+    width: 100%;
+    outline: none;
+    border: none;
+    color: gray;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 1.2rem;
+    height: 50px;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 10px 0;
+    box-shadow: 0 25px 45px rgb(232, 240, 239);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
 .current-info {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -71,19 +90,20 @@ body {
     font-size: 30px;
 }
 
-.place-container {
-    text-align: end;
-}
-
-.place-container .time-zone {
+.date-container .time-zone {
     font-size: 30px;
     font-weight: 100;
 }
 
-.place-container .country {
-    font-size: 12px;
-    font-weight: 700;
+
+/*.place-container {
+    text-align: end;
 }
+
+.time-zone {
+    font-size: 30px;
+    font-weight: 100;
+}*/
 
 .current-info .others {
     display: flex;
