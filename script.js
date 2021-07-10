@@ -3,7 +3,7 @@ const date1 = document.getElementById('date');
 const location1 = document.getElementById('location');
 //const country = document.getElementById('country');
 const currweatherele = document.getElementById('current-weather-items');
-const cli = document.getElementById('nature');
+const climate = document.getElementById('nature');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -36,7 +36,7 @@ function getWeatherData() {
 
         let { latitude, longitude } = success.coords;
 
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${api}`).then(res => res.json()).then(data => {
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,daily,alerts&units=metric&appid=${api}`).then(res => res.json()).then(data => {
 
             console.log(data)
             showWeatherData(data);
@@ -58,11 +58,17 @@ function showWeatherData(data) {
 
 
     let { feels_like, humidity, pressure, sunrise, sunset, temp, wind_speed } = data.current;
+    let { description } = data.current.weather[0];
+
 
 
     currweatherele.innerHTML =
         `
-       
+        <div class="weather-item" id="nature">
+        <p>${description}</p>
+
+    </div>
+
         <div class="weather-item">
     <p>Temperature</p>
     <p>${temp}°C</p>
