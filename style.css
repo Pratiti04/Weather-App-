@@ -119,14 +119,16 @@ body {
     backdrop-filter: blur(5px);
 }
 
-.current-info .others #nature {
+
+/*.current-info .others #nature {
     text-align: center;
     justify-content: center;
-}
+}*/
 
 .current-info .others .weather-item {
     display: flex;
     justify-content: space-between;
+    column-gap: 50px;
     font-size: 25px;
     line-height: 2em;
 }
