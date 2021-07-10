@@ -1,9 +1,9 @@
 const time1 = document.getElementById('time');
 const date1 = document.getElementById('date');
 const location1 = document.getElementById('location');
-const country = document.getElementById('country');
+//const country = document.getElementById('country');
 const currweatherele = document.getElementById('current-weather-items');
-
+const cli = document.getElementById('nature');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -17,11 +17,11 @@ setInterval(() => {
     const day = time.getDay();
     const date = time.getDate();
     const hour = time.getHours();
-    const hoursIn12HrFormat = hour >= 13 ? hour % 12 : hour
+    //const hoursIn12HrFormat = hour >= 13 ? hour % 12 : hour
     const minutes = time.getMinutes();
     const ampm = hour >= 12 ? 'PM' : 'AM'
 
-    time1.innerHTML = hoursIn12HrFormat + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
+    time1.innerHTML = hour + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
 
 
     date1.innerHTML = days[day] + ', ' + date + ' ' + months[month]
@@ -51,11 +51,19 @@ function getWeatherData() {
 function showWeatherData(data) {
 
 
+    const { timezone } = data;
+    location1.textContent = timezone;
+
+
+
+
     let { feels_like, humidity, pressure, sunrise, sunset, temp, wind_speed } = data.current;
 
 
     currweatherele.innerHTML =
-        `<div class="weather-item">
+        `
+       
+        <div class="weather-item">
     <p>Temperature</p>
     <p>${temp}°C</p>
 </div>
@@ -75,15 +83,16 @@ function showWeatherData(data) {
 </div>
 <div class="weather-item">
     <p>Wind </p>
-    <p>${wind_speed}</p>
+    <p>${wind_speed}Km/hr</p>
 </div>
 <div class="weather-item">
     <p>Sunrise</p>
-    <p>${sunrise}</p>
+    <p>${moment(sunrise * 1000).format('HH:mm a')}</p>
 </div>
 <div class="weather-item">
     <p>Sunset</p>
-    <p>${sunset}</p>
-</div>`
+    <p>${moment(sunset * 1000).format('HH:mm a')}</p>
+</div>
 
+`
 }
