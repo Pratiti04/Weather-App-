@@ -5,8 +5,6 @@
 }
 
 body {
-    /* margin: 0;
-    padding: 0;*/
     position: absolute;
     top: 0;
     left: 0;
@@ -95,23 +93,12 @@ body {
     font-weight: 100;
 }
 
-
-/*.place-container {
-    text-align: end;
-}
-
-.time-zone {
-    font-size: 30px;
-    font-weight: 100;
-}*/
-
 .current-info .others {
     display: flex;
     flex-direction: column;
     padding: 20px;
     border-radius: 10px;
     margin: 10px 0;
-    /*border: 1px solid black;*/
     box-shadow: 0 25px 45px rgba(0, 0, 0, 1);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);

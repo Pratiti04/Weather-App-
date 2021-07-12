@@ -1,7 +1,8 @@
 const time1 = document.getElementById('time');
 const date1 = document.getElementById('date');
+const inputext = document.querySelector('.input');
+const button = document.querySelector('.btn');
 const location1 = document.getElementById('location');
-//const country = document.getElementById('country');
 const currweatherele = document.getElementById('current-weather-items');
 const climate = document.getElementById('nature');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -17,16 +18,26 @@ setInterval(() => {
     const day = time.getDay();
     const date = time.getDate();
     const hour = time.getHours();
-    //const hoursIn12HrFormat = hour >= 13 ? hour % 12 : hour
+    const hoursIn12HrFormat = hour >= 13 ? hour % 12 : hour
     const minutes = time.getMinutes();
     const ampm = hour >= 12 ? 'PM' : 'AM'
 
-    time1.innerHTML = hour + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
+    time1.innerHTML = checkTime(hoursIn12HrFormat) + ':' + checkTime(minutes) + ' ' + `<span id="am-pm">${ampm}</span>`
 
 
     date1.innerHTML = days[day] + ', ' + date + ' ' + months[month]
 
 }, 1000);
+
+function checkTime(i) {
+    if (i < 10) {
+        { i = "0" + i; }
+        return i;
+    } else { return i; }
+}
+
+
+
 
 getWeatherData()
 
@@ -39,6 +50,7 @@ function getWeatherData() {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,daily,alerts&units=metric&appid=${api}`).then(res => res.json()).then(data => {
 
             console.log(data)
+
             showWeatherData(data);
 
         })
@@ -70,34 +82,34 @@ function showWeatherData(data) {
     </div>
 
         <div class="weather-item">
-    <p>Temperature</p>
+    <p>Temperature:</p>
     <p>${temp}°C</p>
 </div>
 <div class="weather-item">
-    <p>Feels Like</p>
+    <p>Feels Like:</p>
     <p>${feels_like}°C</p>
 </div>
 
 
 <div class="weather-item">
-    <p>Humidity</p>
+    <p>Humidity:</p>
     <p>${humidity}%</p>
 </div>
 <div class="weather-item">
-    <p>Pressure</p>
+    <p>Pressure:</p>
     <p>${pressure}</p>
 </div>
 <div class="weather-item">
-    <p>Wind </p>
-    <p>${wind_speed}Km/hr</p>
+    <p>Wind Speed: </p>
+    <p>${wind_speed}m/s</p>
 </div>
 <div class="weather-item">
-    <p>Sunrise</p>
-    <p>${moment(sunrise * 1000).format('HH:mm a')}</p>
+    <p>Sunrise:</p>
+    <p>${moment(sunrise * 1000).format('HH:mm')}</p>
 </div>
 <div class="weather-item">
-    <p>Sunset</p>
-    <p>${moment(sunset * 1000).format('HH:mm a')}</p>
+    <p>Sunset:</p>
+    <p>${moment(sunset * 1000).format('HH:mm')}</p>
 </div>
 
 `
